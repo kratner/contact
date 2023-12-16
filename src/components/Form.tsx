@@ -8,7 +8,11 @@ import {
 } from "react-hook-form";
 import { Button, TextField } from "@material-ui/core";
 
-const Form: React.FC = () => {
+interface FormProps {
+  formHeading?: string;
+}
+
+const Form: React.FC<FormProps> = ({ formHeading }) => {
   const {
     register,
     handleSubmit,
@@ -20,15 +24,20 @@ const Form: React.FC = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <TextField label="Name" {...register("name")} required />
+    <div className="contact-form">
+      <div className="contact-form-container">
+        {formHeading && <h1>{formHeading}</h1>}
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <TextField label="Name" {...register("name")} required />
 
-      <TextField label="Email" {...register("email")} required />
+          <TextField label="Email" {...register("email")} required />
 
-      <Button type="submit" variant="contained" color="primary">
-        Submit
-      </Button>
-    </form>
+          <Button type="submit" variant="contained" color="primary">
+            Submit
+          </Button>
+        </form>
+      </div>
+    </div>
   );
 };
 

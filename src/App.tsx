@@ -5,8 +5,7 @@ import Form from "./components/Form";
 const App: React.FC = () => {
   return (
     <div>
-      <h1>Let's Connect!</h1>
-      <Form />
+      <Form formHeading="Let's Connect!" />
     </div>
   );
 };
